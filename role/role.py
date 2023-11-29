@@ -4,7 +4,10 @@ class Role:
     def __init__(self):
         while True:
             self.username = usernameInput()
-            if self.username in usernameChck():
+            if self.username in usernameCheck():
                 break
-        self.password = passwordInput()
-    
+        while True:
+            self.password = passwordInput()
+            if self.password == passwordCheck(self.username):
+                print("Login succeeded")
+                break
