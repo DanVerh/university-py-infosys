@@ -12,8 +12,21 @@ db_params = {
 def connect_to_postgresql():
     try:
         connection = psycopg2.connect(**db_params)
-        print("Connected to the database.")
         return connection
     except Exception as e:
         print(f"Error: Unable to connect to the database. {e}")
+        return None
+    
+
+def execute_query(connection, query, params=None):
+    try:
+        with connection.cursor() as cursor:
+            if params:
+                cursor.execute(query, params)
+            else:
+                cursor.execute(query)
+            results = cursor.fetchall()
+            return results
+    except Exception as e:
+        print(f"Error: Unable to execute the query. {e}")
         return None

@@ -5,7 +5,12 @@ sys.path.append('db')
 from role import * 
 from db import *
 
+def main():
+    role = Role()
 
-role = Role()
+    connection = connect_to_postgresql()
+    query = "select * from workers"
 
-connection = connect_to_postgresql()
+
+if __name__ == "__main__":
+    main()
