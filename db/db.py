@@ -18,7 +18,7 @@ def connect_to_postgresql():
         return None
     
 
-def execute_query(connection, query, params=None):
+def selectQuery(connection, query, params=None):
     try:
         with connection.cursor() as cursor:
             if params:
@@ -30,3 +30,18 @@ def execute_query(connection, query, params=None):
     except Exception as e:
         print(f"Error: Unable to execute the query. {e}")
         return None
+    
+def changeQuery(connection, query, params=None):
+    try:
+        with connection.cursor() as cursor:
+            if params:
+                cursor.execute(query, params)
+            else:
+                cursor.execute(query)
+
+            # Commit the changes to the database
+            connection.commit()
+    except Exception as e:
+        # Rollback the changes if an error occurs
+        connection.rollback()
+        print(f"Error: Unable to execute the query. {e}")

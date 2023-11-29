@@ -11,7 +11,7 @@ def usernameInput():
 def usernameCheck():
     connection = connect_to_postgresql()
     query = "SELECT username FROM workers"
-    usernames = [item[0] for item in execute_query(connection, query)]
+    usernames = [item[0] for item in selectQuery(connection, query)]
     connection.close()
     return usernames
 
@@ -22,6 +22,6 @@ def passwordInput():
 def passwordCheck(username):
     connection = connect_to_postgresql()
     query = sql.SQL("SELECT user_password FROM workers WHERE username = {};").format(sql.Literal(username))
-    password = execute_query(connection, query)
+    password = selectQuery(connection, query)
     connection.close()
     return password[0][0]
