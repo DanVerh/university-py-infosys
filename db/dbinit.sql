@@ -19,8 +19,8 @@ VALUES
 CREATE TABLE products
 ( 
     product_name VARCHAR(50) PRIMARY KEY,
-    price INT NOT NULL CHECK (price >= 1),
-    amount INT
+    price INT NOT NULL CHECK (price > 0),
+    amount INT DEFAULT NULL
 );
 
 CREATE TABLE customers
@@ -33,7 +33,7 @@ CREATE TABLE orders
 ( 
     order_id SERIAL PRIMARY KEY,
     product VARCHAR(50),
-    amount INT NOT NULL CHECK (amount >= 1),
+    amount INT NOT NULL CHECK (amount > 0),
     customer VARCHAR(50),
     sum INT,
     order_status INT DEFAULT 0 CHECK (order_status >= 0 AND order_status <=4),

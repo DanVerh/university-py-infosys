@@ -5,7 +5,7 @@ sys.path.append('productManager')
 
 from role import * 
 from db import *
-from controller import *
+from prController import *
 
 def main():
     #role = Role()

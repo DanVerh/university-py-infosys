@@ -14,7 +14,7 @@ class ProductManagerController:
         product = Product()
         product.setPrice()
         connection = connect_to_postgresql()
-        query = "INSERT INTO products (product_name, price, amount) VALUES (%s, %s, NULL);"
+        query = "INSERT INTO products (product_name, price) VALUES (%s, %s);"
         params = (product.product_name, product.price)
         changeQuery(connection, query, params)
         connection.close()

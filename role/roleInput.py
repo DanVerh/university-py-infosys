@@ -21,7 +21,8 @@ def passwordInput():
 
 def passwordCheck(username):
     connection = connect_to_postgresql()
-    query = sql.SQL("SELECT user_password FROM workers WHERE username = {};").format(sql.Literal(username))
-    password = selectQuery(connection, query)
+    query = "SELECT user_password FROM workers WHERE username = %s;"
+    params = username
+    password = selectQuery(connection, query, params)
     connection.close()
     return password[0][0]
