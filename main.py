@@ -5,7 +5,7 @@ from role.role import *
 def main():
     pm = ProductManagerController()
     pm.printProducts()
-    #pm.deleteProduct()
+    pm.updateProduct()
     #role = Role()
 
 

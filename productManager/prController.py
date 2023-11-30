@@ -3,6 +3,15 @@ from psycopg2 import sql
 from product.product import *
 from db.dbSetup import *
 
+
+def checkProduct():
+    connection = connect_to_postgresql()
+    query = "SELECT product_name FROM products"
+    products = [item[0] for item in selectQuery(connection, query)]
+    connection.close()
+    return products
+
+
 class ProductManagerController:
     def __init__(self) -> None:
         pass
@@ -42,9 +51,30 @@ class ProductManagerController:
         connection.close()
 
     def updateProduct(self):
-        product = input("Enter the product name, that you want to delete: ")
-
+        while True:
+            product_name = input("Enter the product name, that you want to update: ")
+            if product_name in checkProduct():
+                break
+            else:
+                print("Enter the correct product name")
+        print("Enter the property that you want to change")
+        while True:
+            property = input("1 - name, 2 - price: ")
+            if property == "1" or property == "2":
+                break
+            else:
+                print("Enter 1 or 2")
+        if property == "1":
+            column = "product_name"
+        else:
+            column = "price"
+        changed_value = input("What is the new value? ")
         connection = connect_to_postgresql()
-        query = sql.SQL("DELETE FROM products WHERE product_name = {};").format(sql.Literal(product))
-        changeQuery(connection, query)
+        query = f"""
+            UPDATE products
+            SET {column} = %s
+            WHERE product_name = %s;
+        """
+        params = (changed_value, product_name)
+        changeQuery(connection, query, params)
         connection.close()
