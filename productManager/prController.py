@@ -4,7 +4,7 @@ sys.path.append('product')
 
 from psycopg2 import sql
 from product import *
-from db import *
+from dbSetup import *
 
 class ProductManagerController:
     def __init__(self) -> None:

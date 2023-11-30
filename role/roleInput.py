@@ -2,7 +2,7 @@ import sys
 sys.path.append('db')
 
 from psycopg2 import sql
-from db import *
+from dbSetup import *
 
 def usernameInput():
     username = input("Enter the username: ")
@@ -21,8 +21,7 @@ def passwordInput():
 
 def passwordCheck(username):
     connection = connect_to_postgresql()
-    query = "SELECT user_password FROM workers WHERE username = %s;"
-    params = username
-    password = selectQuery(connection, query, params)
+    query = sql.SQL("SELECT user_password FROM workers WHERE username = {};").format(sql.Literal(username))
+    password = selectQuery(connection, query)
     connection.close()
     return password[0][0]
