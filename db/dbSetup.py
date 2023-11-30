@@ -1,5 +1,4 @@
 import psycopg2
-from psycopg2 import sql
 
 db_params = {
     'host': 'localhost',
@@ -28,7 +27,7 @@ def selectQuery(connection, query, params=None):
             results = cursor.fetchall()
             return results
     except Exception as e:
-        print(f"Error: Unable to execute the query. {e}")
+        print("Error happened, please check the input data")
         return None
     
 def changeQuery(connection, query, params=None):
@@ -44,4 +43,4 @@ def changeQuery(connection, query, params=None):
     except Exception as e:
         # Rollback the changes if an error occurs
         connection.rollback()
-        print(f"Error: Unable to execute the query. {e}")
+        print("Error happened, please check the input data")

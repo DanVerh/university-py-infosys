@@ -1,16 +1,17 @@
-from roleInput import *
+from . import roleInput
+
 
 class Role:
     def __init__(self):
         while True:
-            self.username = usernameInput()
-            if self.username in usernameCheck():
+            self.username = roleInput.usernameInput()
+            if self.username in roleInput.usernameCheck():
                 break
             else:
                 print("Username is incorrect")
         while True:
-            self.password = passwordInput()
-            if self.password == passwordCheck(self.username):
+            self.password = roleInput.passwordInput()
+            if self.password == roleInput.passwordCheck(self.username):
                 print("Login succeeded")
                 break
             else:

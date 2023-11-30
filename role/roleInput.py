@@ -1,8 +1,5 @@
-import sys
-sys.path.append('db')
-
 from psycopg2 import sql
-from dbSetup import *
+from db.dbSetup import *
 
 def usernameInput():
     username = input("Enter the username: ")

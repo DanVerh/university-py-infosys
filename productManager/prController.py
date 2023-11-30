@@ -1,10 +1,5 @@
-import sys
-sys.path.append('db')
-sys.path.append('product')
-
-from psycopg2 import sql
-from product import *
-from dbSetup import *
+from product.product import *
+from db.dbSetup import *
 
 class ProductManagerController:
     def __init__(self) -> None:
@@ -18,3 +13,6 @@ class ProductManagerController:
         params = (product.product_name, product.price)
         changeQuery(connection, query, params)
         connection.close()
+
+    def getProduct(self):
+        product_name = input("Enter the product name: ")

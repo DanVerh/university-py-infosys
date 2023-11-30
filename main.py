@@ -1,14 +1,11 @@
-import sys
-sys.path.append('role')
-sys.path.append('productManager')
+from productManager.prController import *
+from role.role import *
 
-from role import * 
-from prController import *
 
 def main():
-    #role = Role()
     pm = ProductManagerController()
     pm.createProduct()
+    role = Role()
 
 
 if __name__ == "__main__":
