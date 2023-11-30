@@ -1,12 +1,11 @@
 from productManager.prController import *
+from productManager.prInterface import prInterface
 from role.role import *
 
 
+
 def main():
-    pm = ProductManagerController()
-    pm.printProducts()
-    pm.updateProduct()
-    #role = Role()
+    prInterface()
 
 
 if __name__ == "__main__":

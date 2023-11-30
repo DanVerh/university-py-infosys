@@ -33,7 +33,7 @@ class ProductManagerController:
 
     def printProducts(self):
         connection = connect_to_postgresql()
-        query = "SELECT * FROM products"
+        query = "SELECT * FROM products ORDER BY product_name"
         products = selectQuery(connection, query)
         connection.close()
         print("Products:")
