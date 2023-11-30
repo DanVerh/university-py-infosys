@@ -4,8 +4,9 @@ from role.role import *
 
 def main():
     pm = ProductManagerController()
-    pm.createProduct()
-    role = Role()
+    pm.printProducts()
+    #pm.deleteProduct()
+    #role = Role()
 
 
 if __name__ == "__main__":
