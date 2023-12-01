@@ -71,6 +71,9 @@ class SalesManagerController:
         query = "INSERT INTO orders (product, amount, customer, sum) VALUES (%s, %s, %s, %s);"
         params = (order.product, order.amount, order.customer, order.sum)
         changeQuery(connection, query, params)
+        query = f"UPDATE products SET amount = (SELECT amount FROM products WHERE product_name = %s) - %s WHERE product_name = %s;"
+        params = (order.product, order.amount, order.product)
+        changeQuery(connection, query, params)
         connection.close()
 
     def printOrders(self):

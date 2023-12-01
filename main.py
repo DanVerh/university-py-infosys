@@ -3,9 +3,7 @@ from salesManager import *
 from db import *
 
 def main():
-    #roleInterface()
-    salesManager = SalesManagerController()
-    salesManager.printOrders()
+    roleInterface()
 
 if __name__ == "__main__":
     main()
