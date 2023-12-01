@@ -1,8 +1,11 @@
 from role import *
-
+from salesManager import *
 
 def main():
-    roleInterface()
+    salesManager = SalesManagerController()
+    salesManager.deleteCustomer()
+    salesManager.printCustomers()
+    #roleInterface()
 
 
 if __name__ == "__main__":

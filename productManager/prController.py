@@ -36,7 +36,12 @@ class ProductManagerController:
                 print(f"Name: {product[0]}, Price: {product[1]}, Amount: {product[2]}")
 
     def deleteProduct(self):
-        product = input("Enter the product name, that you want to delete: ")
+        while True:
+            product_name = input("Enter the product name, that you want to delete: ")
+            if product_name in checkProduct():
+                break
+            else:
+                print("Enter the correct product name")
         connection = connect_to_postgresql()
         query = sql.SQL("DELETE FROM products WHERE product_name = {};").format(sql.Literal(product))
         changeQuery(connection, query)
