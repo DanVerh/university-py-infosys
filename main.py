@@ -1,5 +1,4 @@
 from role import *
-from warehouseWorker import *
 
 
 def main():

@@ -1,2 +1,2 @@
-from .wwController import *
+from .wwInterface import *
 PACKAGE_NAME = "warehouseWorker"

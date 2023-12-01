@@ -4,14 +4,6 @@ from product import *
 from db import *
 
 
-def checkProduct():
-    connection = connect_to_postgresql()
-    query = "SELECT product_name FROM products"
-    products = [item[0] for item in selectQuery(connection, query)]
-    connection.close()
-    return products
-
-
 class ProductManagerController:
     def __init__(self) -> None:
         pass
