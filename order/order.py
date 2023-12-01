@@ -21,7 +21,7 @@ class Order:
         connection.close()
         while True:
             self.amount = input("Enter the ordered product amount: ")
-            if self.amount <= inStockAmount[0][0]:
+            if int(self.amount) <= inStockAmount[0][0]:
                 break
             else:
                 print("Enter the correct amount")
@@ -36,6 +36,9 @@ class Order:
 
         # Sum
         connection = connect_to_postgresql()
-        query = sql.SQL("SELECT amount FROM products WHERE product_name = {};").format(sql.Literal(self.product))
-        inStockAmount = selectQuery(connection, query[0])
+        query = sql.SQL("SELECT price FROM products WHERE product_name = {};").format(sql.Literal(self.product))
+        price = selectQuery(connection, query)
         connection.close()
+        self.sum = int(self.amount) * price[0][0]
+
+        self.status = 0

@@ -36,7 +36,7 @@ CREATE TABLE orders
     amount INT NOT NULL CHECK (amount > 0),
     customer VARCHAR(50),
     sum INT,
-    order_status INT DEFAULT 0 CHECK (order_status >= 0 AND order_status <=4),
+    order_status INT DEFAULT 0 CHECK (order_status >= 0 AND order_status <=2),
 
     FOREIGN KEY (product) REFERENCES products(product_name) ON UPDATE NO ACTION,
     FOREIGN KEY (customer) REFERENCES customers(customer_name) ON UPDATE NO ACTION

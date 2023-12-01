@@ -2,6 +2,7 @@ from psycopg2 import sql
 
 from customer import *
 from db import *
+from order import *
 
 
 class SalesManagerController:
@@ -64,3 +65,25 @@ class SalesManagerController:
         connection.close()
 
     # ORDERS
+    def createOrder(self):
+        order = Order()
+        connection = connect_to_postgresql()
+        query = "INSERT INTO orders (product, amount, customer, sum) VALUES (%s, %s, %s, %s);"
+        params = (order.product, order.amount, order.customer, order.sum)
+        changeQuery(connection, query, params)
+        connection.close()
+
+    def printOrders(self):
+        connection = connect_to_postgresql()
+        query = "SELECT * FROM orders ORDER BY order_id"
+        orders = selectQuery(connection, query)
+        connection.close()
+        print("Orders:")
+        for order in orders:
+            formattedText = f"Order ID: {order[0]}, product: {order[1]}, amount: {order[2]}, customer: {order[3]}, sum: {order[4]}, status: "
+            if order[5] == 0:
+                print(formattedText + "Created")
+            elif order[5] == 1:
+                print(formattedText + "Sent")
+            elif order[5] == 2:
+                print(formattedText + "Delivered")
