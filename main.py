@@ -1,11 +1,8 @@
-from productManager.prController import *
-from productManager.prInterface import prInterface
-from role.role import *
-
+from role.roleInterface import roleInterface
 
 
 def main():
-    prInterface()
+    roleInterface()
 
 
 if __name__ == "__main__":
