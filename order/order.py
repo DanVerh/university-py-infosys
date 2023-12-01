@@ -4,6 +4,13 @@ from product import checkProduct
 from customer import checkCustomer
 from db import *
 
+def checkOrder():
+    connection = connect_to_postgresql()
+    query = "SELECT order_id FROM orders"
+    orders = [item[0] for item in selectQuery(connection, query)]
+    connection.close()
+    return orders
+
 class Order:
     def __init__(self):
         # Product
