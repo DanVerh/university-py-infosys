@@ -1,9 +1,11 @@
 from psycopg2 import sql
-from db.dbSetup import *
+from db import *
+
 
 def usernameInput():
     username = input("Enter the username: ")
     return username
+
 
 def usernameCheck():
     connection = connect_to_postgresql()
@@ -12,9 +14,11 @@ def usernameCheck():
     connection.close()
     return usernames
 
+
 def passwordInput():
     password = input("Enter the password: ")
     return password
+
 
 def passwordCheck(username):
     connection = connect_to_postgresql()

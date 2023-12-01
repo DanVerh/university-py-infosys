@@ -1,7 +1,7 @@
 from psycopg2 import sql
 
-from product.product import *
-from db.dbSetup import *
+from product import *
+from db import *
 
 
 def checkProduct():
@@ -70,11 +70,7 @@ class ProductManagerController:
             column = "price"
         changed_value = input("What is the new value? ")
         connection = connect_to_postgresql()
-        query = f"""
-            UPDATE products
-            SET {column} = %s
-            WHERE product_name = %s;
-        """
+        query = f"UPDATE products SET {column} = %s WHERE product_name = %s;"
         params = (changed_value, product_name)
         changeQuery(connection, query, params)
         connection.close()

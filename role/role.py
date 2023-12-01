@@ -12,7 +12,7 @@ class Role:
         while True:
             self.password = roleInput.passwordInput()
             if self.password == roleInput.passwordCheck(self.username):
-                print("Login succeeded")
+                print("Login succeeded\n")
                 break
             else:
                 print("Password is incorrect")

@@ -8,6 +8,7 @@ db_params = {
     'port': '5432',
 }
 
+
 def connect_to_postgresql():
     try:
         connection = psycopg2.connect(**db_params)
@@ -29,7 +30,8 @@ def selectQuery(connection, query, params=None):
     except Exception as e:
         print("Error happened, please check the input data")
         return None
-    
+
+
 def changeQuery(connection, query, params=None):
     try:
         with connection.cursor() as cursor:

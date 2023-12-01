@@ -1,4 +1,5 @@
-from role.roleInterface import roleInterface
+from role import *
+from warehouseWorker import *
 
 
 def main():

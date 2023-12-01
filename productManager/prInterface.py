@@ -1,5 +1,6 @@
 from .prController import *
 
+
 def prInterface():
     productManager = ProductManagerController()
     while True:
@@ -17,3 +18,4 @@ def prInterface():
             break
         else:
             print("Enter the number 1 - 5")
+        print("")

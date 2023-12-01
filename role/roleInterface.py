@@ -1,5 +1,5 @@
-from productManager.prInterface import prInterface
-from role.role import Role
+from productManager import prInterface
+from .role import Role
 
 
 def roleInterface():
