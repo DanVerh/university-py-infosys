@@ -1,2 +1,2 @@
-from .salesManagerController import *
+from .salesManagerInterface import *
 PACKAGE_NAME = "salesManager"
