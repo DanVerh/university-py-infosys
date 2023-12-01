@@ -2,6 +2,7 @@ from productManager import prInterface
 from warehouseWorker import wwInterface
 from salesManager import salesManagerInterface
 from logistician import logisticianInterface
+from accountant import accountantInterface
 from .role import Role
 
 
@@ -15,3 +16,5 @@ def roleInterface():
         salesManagerInterface()
     elif role.username == "logistician":
         logisticianInterface()
+    else:
+        accountantInterface()
