@@ -1,5 +1,6 @@
 import psycopg2
 
+# DB connection params
 db_params = {
     'host': 'localhost',
     'database': 'db',
@@ -9,6 +10,7 @@ db_params = {
 }
 
 
+# Function to open the connection session with database
 def connect_to_postgresql():
     try:
         connection = psycopg2.connect(**db_params)
@@ -18,6 +20,7 @@ def connect_to_postgresql():
         return None
     
 
+# Function to query the database for results
 def selectQuery(connection, query, params=None):
     try:
         with connection.cursor() as cursor:
@@ -32,6 +35,7 @@ def selectQuery(connection, query, params=None):
         return None
 
 
+# Function for updating, inserting, deleting values
 def changeQuery(connection, query, params=None):
     try:
         with connection.cursor() as cursor:
@@ -39,7 +43,6 @@ def changeQuery(connection, query, params=None):
                 cursor.execute(query, params)
             else:
                 cursor.execute(query)
-
             # Commit the changes to the database
             connection.commit()
     except Exception as e:

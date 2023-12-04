@@ -23,6 +23,12 @@ CREATE TABLE products
     amount INT DEFAULT NULL
 );
 
+INSERT INTO products (product_name, price, amount)
+VALUES
+    ('product1', 120, 10),
+    ('product2', 150, 20),
+    ('product3', 100, 15);
+
 CREATE TABLE customers
 ( 
     customer_name VARCHAR(50) PRIMARY KEY,

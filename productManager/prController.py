@@ -17,12 +17,6 @@ class ProductManagerController:
         changeQuery(connection, query, params)
         connection.close()
 
-    #def getProduct(self):
-    #    product_name = input("Enter the product name: ")
-    #    connection = connect_to_postgresql()
-    #    query = sql.SQL("SELECT * FROM products WHERE product_name = {};").format(sql.Literal(product_name))
-    #    print(selectQuery(connection, query))
-
     def printProducts(self):
         connection = connect_to_postgresql()
         query = "SELECT * FROM products ORDER BY product_name"
